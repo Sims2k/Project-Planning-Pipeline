@@ -1,34 +1,49 @@
 # Project Planning Pipeline
 
-CLI to set up a project planning pipeline in an Obsidian vault: Dashboard, Templates, `.cursor` (rules, skills, agents), and a `Projects/` directory. Use with Cursor and Obsidian for structured project documentation.
+A CLI that installs a **project planning pipeline** into an Obsidian vault: a Dashboard, stage-based Templates, Cursor rules/skills/agents (`.cursor/`), and a `Projects/` directory where each project gets its own folder with a standard stage layout (Status & Roadmap, Market Analysis, Product, Design, Engineering, etc.). Use it with **Obsidian** and **Cursor** for structured project documentation.
 
-**Prerequisites:** Node.js 20+ (includes npm).
+**Requirements:** Node.js 20+ (npm included).
 
 ---
 
-## Install
+## How to set up (end-to-end)
 
-From your vault directory:
+This is the usual way to get from an empty folder to a vault with your first project.
 
+1. **Use a folder as your vault**  
+   Open or create the folder that will be your Obsidian vault (e.g. `C:\Vaults\MyBrain` or `~/vaults/my-brain`).
+
+2. **Install the pipeline (shared assets only)**  
+   In a terminal, go to that folder and run:
+   ```bash
+   cd C:\Vaults\MyBrain
+   npx github:Sims2k/Project-Planning-Pipeline setup
+   ```
+   You get: `Dashboard.md`, `Templates/`, `.cursor/`, and an empty `Projects/` directory.
+
+3. **Create your first project**  
+   Run setup again with a project name. The name is the folder that will appear under `Projects/`:
+   ```bash
+   npx github:Sims2k/Project-Planning-Pipeline setup --project "My First Project"
+   ```
+   The CLI creates `Projects/My First Project/` and all stage folders inside it (00_Status & Roadmap through 09_Assets, Archive).
+
+4. **Add more projects anytime**  
+   Run the same command with a different name:
+   ```bash
+   npx github:Sims2k/Project-Planning-Pipeline setup --project "Another Project"
+   ```
+   Existing files are left unchanged (merge-only).
+
+5. **Optional next steps**  
+   In Obsidian, open the vault folder. Create a Project MOC in each project folder using **Templates → 00_Project MOC.md** and link it from the Dashboard.
+
+**If you are not in the vault directory:** pass the vault path as the first argument:
 ```bash
-npx github:Sims2k/Project-Planning-Pipeline setup
+npx github:Sims2k/Project-Planning-Pipeline setup C:\Vaults\MyBrain --project "My First Project"
 ```
 
-This installs shared assets only (Dashboard, Templates, `.cursor`, empty `Projects/`). To create your first project, add the project name with `--project`:
-
-```bash
-npx github:Sims2k/Project-Planning-Pipeline setup --project "My Project"
-```
-
-Replace `"My Project"` with your project name. The CLI creates `Projects/My Project/` and all stage folders inside it. To add more projects, run the same command with a different name.
-
-**From another directory:** pass the vault path as the first argument:
-
-```bash
-npx github:Sims2k/Project-Planning-Pipeline setup C:\path\to\vault --project "My Project"
-```
-
-**Global install:** `npm install -g github:Sims2k/Project-Planning-Pipeline` then run `pipeline setup` or `pipeline setup --project "My Project"` from anywhere.
+**Global install:** `npm install -g github:Sims2k/Project-Planning-Pipeline` — then you can run `pipeline setup` and `pipeline setup --project "Name"` from any directory (use a vault path when not inside the vault).
 
 ---
 
@@ -36,33 +51,36 @@ npx github:Sims2k/Project-Planning-Pipeline setup C:\path\to\vault --project "My
 
 | Command | Description |
 |--------|-------------|
-| `pipeline setup` | Install pipeline into current directory (shared assets only). |
+| `pipeline setup` | Install into current directory (shared assets only). |
 | `pipeline setup --project "Project Name"` | Install and create `Projects/Project Name/` with stage folders. |
-| `pipeline setup [vault-path]` | Use `vault-path` instead of current directory. |
-| `pipeline setup [vault-path] --project "Project Name"` | Vault path + project name. |
+| `pipeline setup [vault-path]` | Use `vault-path` as the vault (e.g. `C:\Vaults\MyBrain`). |
+| `pipeline setup [vault-path] --project "Project Name"` | Vault path and project name together. |
 | `pipeline version` | Print version. |
 | `pipeline --help` | Show all options. |
 
-**Setup options:** `-p, --project <name>` (project name); `-f, --overwrite` (overwrite existing files); `--no-color`.
-
-**Exit codes:** 0 success, 1 error, 2 invalid path.
+Options: `-p, --project <name>` (project folder name); `-f, --overwrite` (overwrite existing files); `--no-color`. Exit codes: 0 success, 1 error, 2 invalid path.
 
 ---
 
 ## Vault layout
 
-- **Dashboard.md** — Command center.
-- **Templates/** — Stage-based note and canvas templates.
-- **.cursor/** — Rules, skills, agents for Cursor.
-- **Projects/** — One folder per project (e.g. `Projects/My Project/`), each with stages: 00_Status & Roadmap … 09_Assets, Archive.
+After setup you have:
 
-After creating a project, add a Project MOC in that folder using **Templates → 00_Project MOC.md** and link it from the Dashboard.
+- **Dashboard.md** — Command center note.
+- **Templates/** — Note and canvas templates per stage.
+- **.cursor/** — Rules, skills, and agents for Cursor.
+- **Projects/** — One folder per project (e.g. `Projects/My First Project/`), each with: 00_Status & Roadmap, 01_Market Analysis, … 09_Assets, Archive (and 06_Engineering/Sprints).
 
 ---
 
-## Manual setup
+## Setup without the CLI
 
-Without the CLI: [docs/setup-guide.md](docs/setup-guide.md) describes how to copy `pipeline-assets/` into your vault and how to add project folders manually.
+To build the same structure by hand (e.g. no Node.js): clone this repo and copy from `pipeline-assets/` into your vault root.
+
+- **Shared:** `Dashboard.md` → vault root; `Templates/*` → `Templates/`; `cursor/rules/*` → `.cursor/rules/`; `cursor/skills/*` → `.cursor/skills/`; `cursor/agents/*` → `.cursor/agents/`. Create an empty `Projects/` folder.
+- **Per project:** Create `Projects/<YourProjectName>/` and copy the contents of `pipeline-assets/project-folders/` into it (stage folders 00_… through 09_Assets, Archive, and 06_Engineering/Sprints).
+
+Do not overwrite existing files unless you intend to replace them. `.github` and `.obsidian` are not in pipeline-assets; add or configure them in the vault if needed.
 
 ---
 

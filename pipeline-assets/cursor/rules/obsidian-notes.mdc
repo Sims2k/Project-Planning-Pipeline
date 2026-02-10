@@ -1,5 +1,5 @@
 ---
-description: "Rules for creating and editing Obsidian notes in the Project Brain vault. Apply when working with .md files in Projects/, Templates/, or vault root."
+description: "Rules for creating and editing Obsidian notes in this vault. Apply when working with .md files in Projects/, Templates/, or vault root."
 globs: ["**/*.md", "!.cursor/**", "!.github/**"]
 alwaysApply: false
 ---

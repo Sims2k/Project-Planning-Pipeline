@@ -1,5 +1,5 @@
 ---
-description: "Git workflow rules for the Project Brain vault. Apply when committing changes, creating branches, or managing version control."
+description: "Git workflow rules for this vault. Apply when committing changes, creating branches, or managing version control."
 alwaysApply: true
 ---
 
@@ -33,7 +33,7 @@ refactor/<description>         # Structure changes
 ```
 
 **Examples:**
-- `docs/life-in-weeks/add-personas`
+- `docs/my-project/add-personas`
 - `template/update-prd-format`
 - `canvas/architecture-diagram`
 - `fix/broken-links`
@@ -64,14 +64,14 @@ Follow Conventional Commits:
 
 ### Scopes
 
-- Project name: `life-in-weeks`, `project-brain`
+- Project name: `my-project`, `project-name`
 - Folder stage: `00-status`, `03-product`
 - Template name: `prd`, `persona`
 
 ### Examples
 
 ```
-docs(life-in-weeks): add primary persona profile
+docs(my-project): add primary persona profile
 
 template(prd): add success metrics section
 
@@ -111,7 +111,7 @@ One commit per logical change:
 ```
 
 **Examples:**
-- `[Docs] Life-In-Weeks: Add market analysis notes`
+- `[Docs] My Project: Add market analysis notes`
 - `[Template] Update all templates to v2.0`
 - `[Canvas] Add architecture diagrams`
 

@@ -31,7 +31,7 @@ project: "{{title}}"
 status: active          # active | paused | completed | archived
 phase: discovery        # discovery | validation | build | growth | scale
 priority: 3             # 1=critical, 2=high, 3=medium, 4=low, 5=someday
-owner: "Simon"
+owner: ""
 stakeholders: []
 started: "{{date:YYYY-MM-DD}}"
 deadline: ""

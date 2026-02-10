@@ -1,5 +1,5 @@
 ---
-description: "GitHub repository configuration and sync rules for the Project Brain vault. Apply when setting up GitHub, configuring Actions, or managing remote repository."
+description: "GitHub repository configuration and sync rules for this vault. Apply when setting up GitHub, configuring Actions, or managing remote repository."
 alwaysApply: false
 ---
 

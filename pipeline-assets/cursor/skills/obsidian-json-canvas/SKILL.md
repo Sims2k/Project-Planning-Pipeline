@@ -59,7 +59,7 @@ Reference files within the vault.
   "y": 0,
   "width": 400,
   "height": 300,
-  "file": "Projects/Life-In-Weeks/03_Product/PRD.md",
+  "file": "Projects/MyProject/03_Product/PRD.md",
   "subpath": "#MVP Features"
 }
 ```

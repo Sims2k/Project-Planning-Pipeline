@@ -1,5 +1,5 @@
 ---
-description: "Rules for using and creating templates in the Project Brain vault. Apply when creating notes from templates or modifying template files."
+description: "Rules for using and creating templates in this vault. Apply when creating notes from templates or modifying template files."
 globs: ["Templates/**/*.md"]
 alwaysApply: false
 ---

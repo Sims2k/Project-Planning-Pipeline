@@ -12,7 +12,7 @@ modified: 2026-02-02
 updated: 2026-02-06T11:48
 ---
 
-# 🎯 Project Brain — Command Center
+# 🎯 Command Center
 
 > [!abstract] Welcome
 > Your personal knowledge system for project documentation. Track projects, experiments, decisions, and tasks from one place.
@@ -36,7 +36,7 @@ SORT file.mtime DESC
 
 | Project | Phase | Progress | Next Milestone |
 |---------|-------|----------|----------------|
-| [[Life-In-Weeks MOC\|Life-In-Weeks]] | Discovery | 🟡 In Progress | 200 signups |
+| *Add a project with the CLI: `pipeline setup --project "Name"`* | — | — | — |
 
 ---
 
@@ -174,14 +174,14 @@ LIMIT 5
 
 | Stage | Purpose | Jump To |
 |-------|---------|---------|
-| 00 | Status & Roadmap | [[Life-In-Weeks MOC#Lifecycle Navigation\|→]] |
-| 01 | Market Analysis | [[Market_Overview\|→]] |
-| 02 | User Research | [[Persona_Reflective_High_Performer\|→]] |
-| 03 | Product | [[MVP_Spec\|→]] |
-| 04 | Design | [[UX_Flow\|→]] |
-| 05 | Technical | [[Tech_Stack\|→]] |
-| 06 | Engineering | [[Backlog\|→]] |
-| 07 | Analytics | [[KPIs\|→]] |
+| 00 | Status & Roadmap | Create from Templates |
+| 01 | Market Analysis | [[01_Market Overview\|→]] |
+| 02 | User Research | [[02_Persona\|→]] |
+| 03 | Product | [[03_PRD\|→]] |
+| 04 | Design | [[04_UX Flow\|→]] |
+| 05 | Technical | [[05_Tech Stack\|→]] |
+| 06 | Engineering | [[06_Backlog\|→]] |
+| 07 | Analytics | [[07_KPIs\|→]] |
 
 ### Templates
 
@@ -244,10 +244,10 @@ LIMIT 10
 
 ## 💡 Quick Actions
 
-- [ ] Review [[Life-In-Weeks MOC\|Life-In-Weeks]] project status
-- [ ] Check [[KPIs\|KPIs]] for latest metrics
-- [ ] Update [[Backlog\|Backlog]] priorities
-- [ ] Review open [[Experiment_Log\|experiments]]
+- [ ] Review active project status (link your Project MOC)
+- [ ] Check [[07_KPIs\|KPIs]] for latest metrics
+- [ ] Update [[06_Backlog\|Backlog]] priorities
+- [ ] Review open experiments
 
 ---
 

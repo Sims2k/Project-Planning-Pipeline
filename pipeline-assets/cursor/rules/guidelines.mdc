@@ -2,7 +2,7 @@
 alwaysApply: true
 ---
 
-# Project Brain — Guidelines
+# Vault Guidelines
 
 This vault is a **personal knowledge management system** for project documentation. These guidelines ensure consistency and enable effective AI assistance.
 
@@ -61,7 +61,7 @@ Projects/{{Project}}/
 **Types**: `docs`, `template`, `canvas`, `struct`, `fix`, `refactor`, `chore`
 
 **Examples**:
-- `docs(life-in-weeks): add persona profiles`
+- `docs(my-project): add persona profiles`
 - `template(prd): update to v2.0`
 - `fix(02-research): repair broken links`
 

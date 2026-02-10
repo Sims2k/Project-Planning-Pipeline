@@ -6,6 +6,8 @@ This repo provides a CLI that installs the pipeline into a vault: a Dashboard, `
 
 **Requirements:** Node.js 20+ (npm included).
 
+**Guide:** For a step-by-step guide and more context on using the pipeline for personal or business projects, see [Project Planning Pipeline: Plan in Obsidian, Execute with Cursor](https://oliseus.com/digital-odyssey/posts/project-planning-pipeline/) on the Oliseus blog.
+
 ---
 
 ## How to set up (end-to-end)

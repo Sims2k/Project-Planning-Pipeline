@@ -15,34 +15,93 @@ Merge-only by default: existing files in your vault are not overwritten unless y
 
 ---
 
+## Prerequisites
+
+- **Node.js** 20 or later (includes npm). Check with `node -v` and `npm -v`.
+
+---
+
 ## Install
 
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/Sims2k/Project-Planning-Pipeline.git
-   cd Project-Planning-Pipeline
-   ```
+### One command (you’re already in your vault)
 
-2. **Run the CLI** (from the repo or with a path to your vault)
-   - **From the vault directory**, point npx at the cloned repo (replace with your path to the clone):
-     ```bash
-     npx /path/to/Project-Planning-Pipeline setup
-     ```
-   - **From inside the cloned repo**, run setup and pass your vault path:
-     ```bash
-     cd Project-Planning-Pipeline
-     npm install
-     node bin/pipeline.js setup C:\path\to\your\vault
-     ```
-   - **Or install globally** from the cloned repo and run `pipeline` from anywhere:
-     ```bash
-     cd Project-Planning-Pipeline
-     npm install -g .
-     pipeline setup
-     ```
-     (From inside your vault folder, or `pipeline setup C:\path\to\vault` from anywhere.)
+If you’re in your vault folder, this is all you need — no path, no clone, no global install:
 
-3. **Without CLI** — See [Setup guide (manual)](docs/setup-guide.md) to copy `pipeline-assets/` into your vault by hand.
+```bash
+npx github:Sims2k/Project-Planning-Pipeline setup
+```
+
+It installs the pipeline into the **current directory**. Done.
+
+---
+
+### Other ways to run it
+
+Pick one of the following. Each uses the GitHub repo (no npm publish required).
+
+**Run once from anywhere (npx, no install)**
+
+```bash
+# From your vault folder
+npx github:Sims2k/Project-Planning-Pipeline setup
+
+# From anywhere — pass the vault path
+npx github:Sims2k/Project-Planning-Pipeline setup C:\path\to\your\vault
+```
+
+---
+
+### Install globally (recommended if you use it often)
+
+Install once from GitHub; then the `pipeline` command is available everywhere.
+
+```bash
+npm install -g github:Sims2k/Project-Planning-Pipeline
+```
+
+Then run:
+
+```bash
+# From your vault folder
+pipeline setup
+
+# Or from anywhere
+pipeline setup C:\path\to\your\vault
+```
+
+To update later: run the same `npm install -g github:Sims2k/Project-Planning-Pipeline` again.
+
+---
+
+### Clone and run from source
+
+Useful if you want to hack on the repo or run without network access.
+
+```bash
+git clone https://github.com/Sims2k/Project-Planning-Pipeline.git
+cd Project-Planning-Pipeline
+npm install
+```
+
+Run the CLI from the repo directory:
+
+```bash
+node bin/pipeline.js setup
+```
+
+Or install this clone globally so `pipeline` is on your PATH:
+
+```bash
+cd Project-Planning-Pipeline
+npm install -g .
+pipeline setup
+```
+
+---
+
+### Without the CLI
+
+See [Setup guide (manual)](docs/setup-guide.md) to copy `pipeline-assets/` into your vault by hand (same result as the CLI).
 
 ---
 

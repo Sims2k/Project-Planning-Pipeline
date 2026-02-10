@@ -24,6 +24,11 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Project / Cursor specifics (not pushed to GitHub)
+.specify/
+.cursor/
+specs/
+
 # Test
 coverage/
 .nyc_output/

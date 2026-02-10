@@ -73,6 +73,25 @@ After setup you have:
 
 ---
 
+## Obsidian community plugins
+
+To make the Dashboard, templates, and charts work as intended, install these Obsidian community plugins (Settings → Community plugins → Browse and install):
+
+**Recommended (needed for pipeline features):**
+
+- **DataView** — Required for Dashboard queries (tables, lists from your notes). [Obsidian-Templates](https://github.com/groepl/Obsidian-Templates) and the [Obsidian Zettelkasten Starter Kit](https://github.com/groepl/Obsidian-Zettelkasten-Starter-Kit) both rely on it.
+- **Templates** — So you can insert notes from the `Templates/` folder (e.g. 00_Project MOC, PRD, Backlog). Use Obsidian’s core Templates plugin or a community alternative and set the template folder to `Templates`.
+- **Charts** — For charts and graphs in notes (e.g. in the Dashboard or project notes).
+- **Banners** — For banner images in note headers (referred to in some templates).
+
+**Optional (Zettelkasten-style workflow):**
+
+The [Obsidian Zettelkasten Starter Kit](https://github.com/groepl/Obsidian-Zettelkasten-Starter-Kit) recommends Banners, Charts, and DataView. [Obsidian-Templates](https://github.com/groepl/Obsidian-Templates) lists additional plugins (e.g. Frontmatter Tag Suggest, Update Time on Edit, Wikipedia, Auto Link Title, Tag Wrangler). Install any of these if you want the same workflow as in those guides.
+
+After installing, enable the plugins in Settings → Community plugins and restart Obsidian if prompted.
+
+---
+
 ## Setup without the CLI
 
 To build the same structure by hand (e.g. no Node.js): clone this repo and copy from `pipeline-assets/` into your vault root.

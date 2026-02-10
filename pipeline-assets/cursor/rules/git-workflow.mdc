@@ -1,0 +1,216 @@
+---
+description: "Git workflow rules for the Project Brain vault. Apply when committing changes, creating branches, or managing version control."
+alwaysApply: true
+---
+
+# Git Workflow Rules
+
+## Repository Purpose
+
+This is an **Obsidian vault** for project documentation. Git provides:
+- Version history for all notes and templates
+- Rollback capability for accidental changes
+- Collaboration via GitHub
+- Backup and sync across devices
+
+## Branch Strategy
+
+### Main Branches
+
+| Branch | Purpose | Protection |
+|--------|---------|------------|
+| `main` | Stable vault state | Protected, requires PR |
+| `develop` | Integration branch | Semi-protected |
+
+### Feature Branches
+
+```
+docs/<project>/<description>   # Documentation changes
+template/<name>                # Template updates
+canvas/<name>                  # Canvas changes
+fix/<description>              # Fixes and corrections
+refactor/<description>         # Structure changes
+```
+
+**Examples:**
+- `docs/life-in-weeks/add-personas`
+- `template/update-prd-format`
+- `canvas/architecture-diagram`
+- `fix/broken-links`
+
+## Commit Message Format
+
+Follow Conventional Commits:
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer]
+```
+
+### Types for Documentation
+
+| Type | Use Case |
+|------|----------|
+| `docs` | Note content changes |
+| `template` | Template modifications |
+| `canvas` | Canvas file changes |
+| `struct` | Folder structure changes |
+| `fix` | Broken links, typos |
+| `refactor` | Reorganization |
+| `chore` | Config, gitignore |
+
+### Scopes
+
+- Project name: `life-in-weeks`, `project-brain`
+- Folder stage: `00-status`, `03-product`
+- Template name: `prd`, `persona`
+
+### Examples
+
+```
+docs(life-in-weeks): add primary persona profile
+
+template(prd): add success metrics section
+
+canvas(03-product): create lean canvas visualization
+
+fix(02-research): repair broken persona links
+
+struct: reorganize templates by stage number
+
+chore: update gitignore for Obsidian cache
+```
+
+## Commit Frequency
+
+### Atomic Commits
+
+One commit per logical change:
+- ✅ One note creation/update
+- ✅ Related template + notes using it
+- ✅ Canvas + corresponding markdown
+- ❌ Unrelated changes in same commit
+
+### Recommended Commit Points
+
+1. After creating a new project structure
+2. After completing a template update
+3. After finishing a documentation session
+4. Before switching to different project
+5. At end of work day
+
+## Pull Request Workflow
+
+### PR Title Format
+
+```
+[Type] Scope: Description
+```
+
+**Examples:**
+- `[Docs] Life-In-Weeks: Add market analysis notes`
+- `[Template] Update all templates to v2.0`
+- `[Canvas] Add architecture diagrams`
+
+### PR Description Template
+
+```markdown
+## Summary
+Brief description of changes
+
+## Changes
+- [ ] List of files changed
+- [ ] New notes created
+- [ ] Templates modified
+
+## Related
+- Closes #issue (if applicable)
+- Related to [[Project MOC]]
+
+## Checklist
+- [ ] Frontmatter is complete
+- [ ] Back matter includes links
+- [ ] Tags follow taxonomy
+- [ ] Modified dates updated
+- [ ] No broken links
+```
+
+## What to Commit
+
+### Always Commit
+
+- All `.md` files (notes, templates)
+- All `.canvas` files
+- `agent.md` documentation
+- `.cursor/rules/` and `.cursor/skills/`
+- `.obsidian/` config (selective)
+
+### Never Commit
+
+- `.obsidian/workspace.json` (personal layout)
+- `.obsidian/cache/`
+- `.trash/`
+- `.DS_Store`, `Thumbs.db`
+- Sensitive/personal notes
+
+## Gitignore Configuration
+
+Essential `.gitignore` entries:
+
+```gitignore
+# Obsidian
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.trash/
+
+# System
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Sensitive (add as needed)
+# Private/
+# Credentials/
+```
+
+## Rollback Procedures
+
+### Undo Last Commit (not pushed)
+```bash
+git reset --soft HEAD~1
+```
+
+### Revert Specific Note
+```bash
+git checkout HEAD~1 -- "Projects/Project/Note.md"
+```
+
+### View Note History
+```bash
+git log --oneline -- "Projects/Project/Note.md"
+git show <commit>:"Projects/Project/Note.md"
+```
+
+### Recover Deleted Note
+```bash
+git log --diff-filter=D --summary | grep "Note.md"
+git checkout <commit>^ -- "Projects/Project/Note.md"
+```
+
+## Do NOT
+
+- Commit without meaningful message
+- Push directly to `main` (use PRs)
+- Commit `.obsidian/workspace.json`
+- Include secrets or credentials
+- Force push to shared branches
+- Commit large binary files (use Git LFS)

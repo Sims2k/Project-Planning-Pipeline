@@ -1,0 +1,90 @@
+---
+alwaysApply: true
+---
+
+# Project Brain — Guidelines
+
+This vault is a **personal knowledge management system** for project documentation. These guidelines ensure consistency and enable effective AI assistance.
+
+## Quick Reference
+
+| Aspect | Standard |
+|--------|----------|
+| **Frontmatter** | Required on all notes |
+| **Tags** | `type/`, `project/`, `stage/` |
+| **Back Matter** | Required on all notes |
+| **Links** | WikiLinks with `[[Note]]` |
+| **Dates** | ISO format `YYYY-MM-DD` |
+| **Git** | Conventional Commits |
+| **Branches** | `docs/`, `template/`, `fix/` |
+
+## Core Principles
+
+1. **Connection over collection** — Notes link to sources, references, and downstream uses
+2. **Atomic and purposeful** — Each note has one clear purpose
+3. **Validate before building** — Document hypotheses and experiment results
+4. **Decisions as first-class** — ADRs and pivots are documented
+
+## Project Structure
+
+```
+Projects/{{Project}}/
+  {{Project}} MOC.md          # Central hub
+  00_Status & Roadmap/        # Management
+  01_Market Analysis/         # Research
+  02_User Research/           # Personas
+  03_Product/                 # Definition
+  04_Design/                  # UX
+  05_Technical/               # Architecture
+  06_Engineering/             # Execution
+  07_Analytics & Growth/      # Metrics
+  08_Legal & Privacy/         # Compliance
+  09_Assets/                  # Files
+  Archive/                    # Old notes
+```
+
+## Key Rules (see `.cursor/rules/` for details)
+
+- **obsidian-notes.mdc** — Frontmatter, tags, back matter
+- **project-structure.mdc** — Folder organization
+- **canvas-files.mdc** — JSON Canvas format
+- **templates.mdc** — Template usage
+- **git-workflow.mdc** — Version control
+- **github-sync.mdc** — Remote sync
+
+## Commit Message Format
+
+```
+<type>(<scope>): <description>
+```
+
+**Types**: `docs`, `template`, `canvas`, `struct`, `fix`, `refactor`, `chore`
+
+**Examples**:
+- `docs(life-in-weeks): add persona profiles`
+- `template(prd): update to v2.0`
+- `fix(02-research): repair broken links`
+
+## AI Assistance Guidelines
+
+When using AI to edit this vault:
+
+1. **Always preserve frontmatter** — Never remove or corrupt YAML
+2. **Update modified date** — Set to current date on edits
+3. **Maintain links** — Check WikiLinks after changes
+4. **Follow templates** — Use appropriate template for note type
+5. **Stage-appropriate** — Put notes in correct numbered folder
+6. **Complete back matter** — Include Source, References, Used By
+
+## Related Documentation
+
+- `agent.md` — Full documentation principles
+- `Templates/` — All available templates
+- `.cursor/skills/` — AI agent capabilities
+
+## Maintenance
+
+- Delete branches after merge
+- Tag releases with `vX.Y.Z`
+- Archive completed projects
+- Review and update templates quarterly

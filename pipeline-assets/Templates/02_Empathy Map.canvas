@@ -1,0 +1,12 @@
+{
+	"nodes": [
+		{"id": "e5f6a7b8c9d00001", "type": "text", "x": 200, "y": -80, "width": 240, "height": 60, "color": "6", "text": "## Empathy Map\n**Persona:** [Name]"},
+		{"id": "e5f6a7b8c9d00010", "type": "text", "x": 0, "y": 0, "width": 280, "height": 180, "color": "5", "text": "## Says\n\n*What have you heard them say?*\n\n> \"[Quote 1]\"\n\n> \"[Quote 2]\"\n\n> \"[Quote 3]\""},
+		{"id": "e5f6a7b8c9d00011", "type": "text", "x": 340, "y": 0, "width": 280, "height": 180, "color": "6", "text": "## Thinks\n\n*What occupies their thinking? Worries?*\n\n- [Thought 1]\n- [Thought 2]\n- [Thought 3]"},
+		{"id": "e5f6a7b8c9d00012", "type": "text", "x": 0, "y": 200, "width": 280, "height": 180, "color": "4", "text": "## Does\n\n*What actions and behaviors do you observe?*\n\n- [Action 1]\n- [Action 2]\n- [Action 3]"},
+		{"id": "e5f6a7b8c9d00013", "type": "text", "x": 340, "y": 200, "width": 280, "height": 180, "color": "2", "text": "## Feels\n\n*What emotions do they experience?*\n\n- [Emotion 1]\n- [Emotion 2]\n- [Emotion 3]"},
+		{"id": "e5f6a7b8c9d00014", "type": "text", "x": 0, "y": 400, "width": 280, "height": 160, "color": "1", "text": "## Pains\n\n*Frustrations, fears, obstacles*\n\n1. [Pain 1]\n2. [Pain 2]\n3. [Pain 3]"},
+		{"id": "e5f6a7b8c9d00015", "type": "text", "x": 340, "y": 400, "width": 280, "height": 160, "color": "4", "text": "## Gains\n\n*Goals, wants, needs, measures of success*\n\n1. [Gain 1]\n2. [Gain 2]\n3. [Gain 3]"}
+	],
+	"edges": []
+}

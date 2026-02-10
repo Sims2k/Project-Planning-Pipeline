@@ -1,0 +1,23 @@
+# Same as .gitignore so packed installs (npx / npm i from GitHub) behave predictably.
+# Do NOT add pipeline-assets/ — it is required at runtime.
+node_modules/
+.env
+.env.*
+dist/
+build/
+coverage/
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/
+.nyc_output/
+
+# Repo-only (not needed when running the CLI)
+.git/
+.cursor/
+.specify/
+specs/

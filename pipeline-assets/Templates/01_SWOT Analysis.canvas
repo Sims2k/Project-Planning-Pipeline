@@ -1,0 +1,21 @@
+{
+	"nodes": [
+		{"id": "d4e5f6a7b8c90001", "type": "text", "x": 220, "y": -80, "width": 200, "height": 40, "text": "## SWOT Analysis"},
+		{"id": "d4e5f6a7b8c90002", "type": "text", "x": 0, "y": -30, "width": 200, "height": 30, "text": "**HELPFUL**"},
+		{"id": "d4e5f6a7b8c90003", "type": "text", "x": 420, "y": -30, "width": 200, "height": 30, "text": "**HARMFUL**"},
+		{"id": "d4e5f6a7b8c90004", "type": "text", "x": -140, "y": 60, "width": 120, "height": 30, "text": "**INTERNAL**"},
+		{"id": "d4e5f6a7b8c90005", "type": "text", "x": -140, "y": 280, "width": 120, "height": 30, "text": "**EXTERNAL**"},
+		{"id": "d4e5f6a7b8c90010", "type": "text", "x": 0, "y": 10, "width": 280, "height": 200, "color": "4", "text": "## Strengths\n\n1. [Strength 1]\n2. [Strength 2]\n3. [Strength 3]\n4. [Strength 4]\n5. [Strength 5]"},
+		{"id": "d4e5f6a7b8c90011", "type": "text", "x": 340, "y": 10, "width": 280, "height": 200, "color": "1", "text": "## Weaknesses\n\n1. [Weakness 1]\n2. [Weakness 2]\n3. [Weakness 3]\n4. [Weakness 4]\n5. [Weakness 5]"},
+		{"id": "d4e5f6a7b8c90012", "type": "text", "x": 0, "y": 230, "width": 280, "height": 200, "color": "5", "text": "## Opportunities\n\n1. [Opportunity 1]\n2. [Opportunity 2]\n3. [Opportunity 3]\n4. [Opportunity 4]\n5. [Opportunity 5]"},
+		{"id": "d4e5f6a7b8c90013", "type": "text", "x": 340, "y": 230, "width": 280, "height": 200, "color": "3", "text": "## Threats\n\n1. [Threat 1]\n2. [Threat 2]\n3. [Threat 3]\n4. [Threat 4]\n5. [Threat 5]"},
+		{"id": "d4e5f6a7b8c90020", "type": "text", "x": 0, "y": 460, "width": 280, "height": 120, "text": "## SO Strategies\n*Use strengths to capture opportunities*\n\n- [Strategy 1]\n- [Strategy 2]"},
+		{"id": "d4e5f6a7b8c90021", "type": "text", "x": 340, "y": 460, "width": 280, "height": 120, "text": "## WT Strategies\n*Minimize weaknesses, avoid threats*\n\n- [Strategy 1]\n- [Strategy 2]"}
+	],
+	"edges": [
+		{"id": "d4e5f6a7b8c9e001", "fromNode": "d4e5f6a7b8c90010", "fromSide": "bottom", "toNode": "d4e5f6a7b8c90020", "toSide": "top", "toEnd": "arrow", "color": "4"},
+		{"id": "d4e5f6a7b8c9e002", "fromNode": "d4e5f6a7b8c90012", "fromSide": "bottom", "toNode": "d4e5f6a7b8c90020", "toSide": "top", "toEnd": "arrow", "color": "5"},
+		{"id": "d4e5f6a7b8c9e003", "fromNode": "d4e5f6a7b8c90011", "fromSide": "bottom", "toNode": "d4e5f6a7b8c90021", "toSide": "top", "toEnd": "arrow", "color": "1"},
+		{"id": "d4e5f6a7b8c9e004", "fromNode": "d4e5f6a7b8c90013", "fromSide": "bottom", "toNode": "d4e5f6a7b8c90021", "toSide": "top", "toEnd": "arrow", "color": "3"}
+	]
+}

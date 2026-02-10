@@ -1,0 +1,183 @@
+---
+description: "Rules for using and creating templates in the Project Brain vault. Apply when creating notes from templates or modifying template files."
+globs: ["Templates/**/*.md"]
+alwaysApply: false
+---
+
+# Template Rules
+
+## Template Naming Convention
+
+Templates are numbered by their primary stage:
+
+```
+Templates/
+  00_Project MOC.md
+  00_Status Dashboard.md
+  00_Roadmap.md
+  00_Decision Log.md
+  01_Market Overview.md
+  01_Competitor Map.md
+  01_SWOT Analysis.md
+  02_Persona.md
+  02_Empathy Map.md
+  02_Interview Notes.md
+  03_PRD.md
+  03_Lean Canvas.md
+  03_Value Proposition Canvas.md
+  03_Business Model Canvas.md
+  04_UX Flow.md
+  05_Tech Stack.md
+  06_Backlog.md
+  06_Sprint.md
+  07_Experiment.md
+  07_KPIs.md
+  XX_Meeting Note.md
+```
+
+## Template Header Format
+
+Every template MUST start with a header comment block:
+
+```yaml
+---
+# ═══════════════════════════════════════════════════════════════════════════════
+# TEMPLATE: [Template Name]
+# STAGE: [00-08] - [Stage Name]
+# PURPOSE: [One-line description of when to use this template]
+# ═══════════════════════════════════════════════════════════════════════════════
+```
+
+## Template Placeholders
+
+Use Obsidian Templater syntax:
+
+| Placeholder | Purpose |
+|-------------|---------|
+| `{{title}}` | Note title |
+| `{{date:YYYY-MM-DD}}` | Current date |
+| `{{project}}` | Project name |
+| `{{number}}` | Sequential number |
+
+## Required Template Sections
+
+### All Templates Must Include
+
+1. **Frontmatter** with all required fields
+2. **Title** as H1 heading
+3. **Lead callout** displaying `this.lead`
+4. **Main content** sections
+5. **Back Matter** section
+
+### Template Structure Example
+
+```markdown
+---
+# [Header comment block]
+tags: [...]
+lead: "..."
+# [All required fields]
+---
+
+# {{title}}
+
+> [!note] `= this.icon`
+> `= this.lead`
+
+## Section 1
+[Content...]
+
+## Section 2
+[Content...]
+
+---
+## Back Matter
+
+**Source**:: 
+**References**:: 
+**Used By**:: 
+
+---
+**Open Questions**
+- ❓ 
+
+**Action Items**
+- [ ] 
+```
+
+## Template by Stage
+
+### Stage 00 Templates
+- Focus on project management
+- Include Dataview queries for tracking
+- Link to roadmap and decisions
+
+### Stage 01-02 Templates
+- Focus on research and discovery
+- Include tables for structured data
+- Support hypothesis documentation
+
+### Stage 03 Templates
+- Focus on product definition
+- Include canvas layouts (markdown tables)
+- Support validation hypotheses
+
+### Stage 04-05 Templates
+- Focus on design and technical specs
+- Reference canvas files for visuals
+- Include code blocks where relevant
+
+### Stage 06 Templates
+- Focus on execution tracking
+- Include task lists
+- Support sprint retrospectives
+
+### Stage 07 Templates
+- Focus on metrics and experiments
+- Include hypothesis format
+- Support result documentation
+
+## Using Templates
+
+### In Obsidian
+
+1. Use Templater plugin or core Templates
+2. Create new note in correct stage folder
+3. Insert template
+4. Fill in placeholders
+5. Update `created` and `modified` dates
+
+### Manual Creation
+
+1. Copy template content
+2. Replace all `{{placeholders}}`
+3. Update frontmatter fields
+4. Customize content
+5. Add appropriate links
+
+## Modifying Templates
+
+### Version Control
+
+When updating a template:
+1. Increment `template.version` in frontmatter
+2. Document changes in commit message
+3. Consider backward compatibility
+4. Update existing notes if breaking change
+
+### Adding New Templates
+
+1. Determine appropriate stage (00-08 or XX)
+2. Follow naming convention: `[Stage]_[Name].md`
+3. Include all required sections
+4. Add to template catalog in `agent.md`
+5. Create corresponding `.canvas` if visual
+
+## Do NOT
+
+- Create templates without stage prefix
+- Skip the header comment block
+- Use hardcoded dates (use placeholders)
+- Create templates outside `Templates/` folder
+- Delete templates without migration plan
+- Change template structure without version bump

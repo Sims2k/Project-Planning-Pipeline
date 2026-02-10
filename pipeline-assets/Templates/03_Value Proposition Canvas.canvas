@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"c3d4e5f6a7b80001","type":"group","x":0,"y":-40,"width":420,"height":460,"label":"Value Map","color":"5"},
+		{"id":"c3d4e5f6a7b80002","type":"group","x":460,"y":-40,"width":420,"height":460,"label":"Customer Profile","color":"2"},
+		{"id":"c3d4e5f6a7b80010","type":"text","x":20,"y":0,"width":380,"height":120,"text":"## Products & Services\n\n- [Product 1]\n- [Product 2]\n- [Service 1]"},
+		{"id":"c3d4e5f6a7b80011","type":"text","x":20,"y":140,"width":380,"height":120,"color":"4","text":"## Pain Relievers\n\n**[Pain 1]** -> [How we relieve it]\n**[Pain 2]** -> [How we relieve it]\n**[Pain 3]** -> [How we relieve it]"},
+		{"id":"c3d4e5f6a7b80012","type":"text","x":20,"y":280,"width":380,"height":120,"color":"4","text":"## Gain Creators\n\n**[Gain 1]** -> [How we enable it]\n**[Gain 2]** -> [How we enable it]\n**[Gain 3]** -> [How we enable it]"},
+		{"id":"c3d4e5f6a7b80013","type":"text","x":480,"y":0,"width":380,"height":120,"text":"## Customer Jobs\n\n**Functional:** [Tasks to complete]\n**Social:** [How they want to be perceived]\n**Emotional:** [How they want to feel]"},
+		{"id":"c3d4e5f6a7b80014","type":"text","x":480,"y":140,"width":380,"height":120,"color":"1","text":"## Pains\n\n1. [Pain 1] (severity: 5/5)\n2. [Pain 2] (severity: 4/5)\n3. [Pain 3] (severity: 3/5)"},
+		{"id":"c3d4e5f6a7b80015","type":"text","x":480,"y":280,"width":380,"height":120,"color":"4","text":"## Gains\n\n**Required:** [Must have]\n**Expected:** [Should have]\n**Desired:** [Nice to have]\n**Unexpected:** [Delighters]"}
+	],
+	"edges":[
+		{"id":"c3d4e5f6a7b8e001","fromNode":"c3d4e5f6a7b80011","fromSide":"right","toNode":"c3d4e5f6a7b80014","toSide":"left","toEnd":"arrow","label":"Relieves","color":"4"},
+		{"id":"c3d4e5f6a7b8e002","fromNode":"c3d4e5f6a7b80012","fromSide":"right","toNode":"c3d4e5f6a7b80015","toSide":"left","toEnd":"arrow","label":"Creates","color":"4"},
+		{"id":"c3d4e5f6a7b8e003","fromNode":"c3d4e5f6a7b80010","fromSide":"right","toNode":"c3d4e5f6a7b80013","toSide":"left","toEnd":"arrow","label":"FIT","color":"5"}
+	]
+}

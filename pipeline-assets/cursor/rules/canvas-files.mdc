@@ -1,0 +1,109 @@
+---
+description: "Rules for creating and editing JSON Canvas files (.canvas). Apply when working with visual diagrams, flowcharts, or business canvases."
+globs: ["**/*.canvas"]
+alwaysApply: false
+---
+
+# JSON Canvas Rules
+
+## File Format
+
+Canvas files are JSON following [JSON Canvas Spec 1.0](https://jsoncanvas.org/spec/1.0/).
+
+```json
+{
+  "nodes": [],
+  "edges": []
+}
+```
+
+## Node Structure
+
+Every node requires:
+
+```json
+{
+  "id": "16-char-hex-string",
+  "type": "text|file|link|group",
+  "x": 0,
+  "y": 0,
+  "width": 200,
+  "height": 100
+}
+```
+
+## ID Generation
+
+- Use 16-character lowercase hex strings
+- IDs must be unique across nodes and edges
+- Example: `"6f0ad84f44ce9c17"`
+
+## Newline Handling
+
+**CRITICAL**: Use `\n` for newlines in text, NOT `\\n`
+
+```json
+// Correct
+{ "text": "Line 1\nLine 2" }
+
+// Wrong - will display as literal \n
+{ "text": "Line 1\\nLine 2" }
+```
+
+## Color Presets
+
+| Preset | Color | Use Case |
+|--------|-------|----------|
+| `"1"` | Red | Problems, risks, P0 |
+| `"2"` | Orange | Warnings, P1 |
+| `"3"` | Yellow | Caution, in-progress |
+| `"4"` | Green | Success, solutions |
+| `"5"` | Cyan | Info, frontend |
+| `"6"` | Purple | Special, backend |
+
+## Canvas Patterns by Stage
+
+### 00 — Roadmap Canvas
+- Horizontal flow: phases left-to-right
+- Each phase as text node with tasks
+- Color by phase status
+
+### 03 — Business Canvases
+- **Lean Canvas**: 9 sections, problem-solution focus
+- **Business Model Canvas**: 9 blocks, Strategyzer layout
+- **Value Proposition Canvas**: Customer profile + Value map
+
+### 04 — UX Flow Canvas
+- User journey stages left-to-right
+- Each stage: goal, elements, metrics
+- Edges labeled with user actions
+
+### 05 — Architecture Canvas
+- Layer groups: Frontend, Backend, Data
+- Components as text nodes inside groups
+- Edges show data flow with labels
+
+## Layout Guidelines
+
+- Align to 20px grid
+- Space nodes 50-100px apart
+- Leave 20-50px padding in groups
+- Standard sizes:
+  - Small: 200×100
+  - Medium: 280×180
+  - Large: 400×300
+
+## Naming Convention
+
+Canvas files should match their markdown counterpart:
+- `UX_Flow.md` → `UX_Flow.canvas`
+- `Architecture.md` → `Architecture.canvas`
+- `Lean_Canvas.md` → `Lean_Canvas.canvas`
+
+## Do NOT
+
+- Use `\\n` for newlines
+- Create canvases without corresponding .md files
+- Use random/sequential IDs (use hex)
+- Exceed 50 nodes per canvas (split if needed)
+- Leave edges pointing to non-existent nodes

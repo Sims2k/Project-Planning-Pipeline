@@ -1,0 +1,15 @@
+{
+	"nodes":[
+		{"id":"a1b2c3d4e5f60001","type":"group","x":0,"y":-60,"width":1100,"height":340,"label":"Business Model Canvas","color":"5"},
+		{"id":"a1b2c3d4e5f60010","type":"text","x":20,"y":0,"width":200,"height":260,"color":"6","text":"## Key Partners\n\n- [Partner 1]\n- [Partner 2]\n- [Partner 3]\n\n**Type:**\n- [ ] Strategic alliance\n- [ ] Coopetition\n- [ ] Joint venture\n- [ ] Buyer-supplier"},
+		{"id":"a1b2c3d4e5f60011","type":"text","x":240,"y":0,"width":200,"height":125,"color":"5","text":"## Key Activities\n\n- [Activity 1]\n- [Activity 2]\n- [Activity 3]"},
+		{"id":"a1b2c3d4e5f60012","type":"text","x":240,"y":135,"width":200,"height":125,"color":"5","text":"## Key Resources\n\n- **Physical**: []\n- **Intellectual**: []\n- **Human**: []\n- **Financial**: []"},
+		{"id":"a1b2c3d4e5f60013","type":"text","x":460,"y":0,"width":200,"height":260,"color":"4","text":"## Value Propositions\n\n**For [segment]:**\n- [Value 1]\n- [Value 2]\n\n**Drivers:**\n- [ ] Newness\n- [ ] Performance\n- [ ] Customization\n- [ ] Price\n- [ ] Convenience"},
+		{"id":"a1b2c3d4e5f60014","type":"text","x":680,"y":0,"width":200,"height":125,"color":"3","text":"## Customer Relationships\n\n- [ ] Self-service\n- [ ] Automated\n- [ ] Communities\n- [ ] Co-creation\n- [ ] Personal"},
+		{"id":"a1b2c3d4e5f60015","type":"text","x":680,"y":135,"width":200,"height":125,"color":"3","text":"## Channels\n\n- **Awareness**: []\n- **Evaluation**: []\n- **Purchase**: []\n- **Delivery**: []\n- **After Sales**: []"},
+		{"id":"a1b2c3d4e5f60016","type":"text","x":900,"y":0,"width":180,"height":260,"color":"2","text":"## Customer Segments\n\n**Primary:**\n- [Segment 1]\n\n**Secondary:**\n- [Segment 2]\n\n**Type:**\n- [ ] Mass market\n- [ ] Niche\n- [ ] Segmented\n- [ ] Multi-sided"},
+		{"id":"a1b2c3d4e5f60017","type":"text","x":20,"y":280,"width":530,"height":100,"color":"1","text":"## Cost Structure\n\n| Category | Est. Monthly | % of Total |\n|----------|-------------|------------|\n| [Cost 1] | $X | X% |\n| [Cost 2] | $X | X% |"},
+		{"id":"a1b2c3d4e5f60018","type":"text","x":570,"y":280,"width":510,"height":100,"color":"4","text":"## Revenue Streams\n\n| Type | Pricing | Est. Revenue |\n|------|---------|-------------|\n| [Stream 1] | $X/mo | $X |\n| [Stream 2] | $X | $X |"}
+	],
+	"edges":[]
+}

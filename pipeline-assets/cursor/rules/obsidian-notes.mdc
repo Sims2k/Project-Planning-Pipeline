@@ -1,0 +1,120 @@
+---
+description: "Rules for creating and editing Obsidian notes in the Project Brain vault. Apply when working with .md files in Projects/, Templates/, or vault root."
+globs: ["**/*.md", "!.cursor/**", "!.github/**"]
+alwaysApply: false
+---
+
+# Obsidian Note Rules
+
+## Frontmatter Standard
+
+Every project note MUST include YAML frontmatter with:
+
+```yaml
+---
+# ═══════════════════════════════════════════════════════════════════════════════
+# TEMPLATE: [Template Name]
+# STAGE: [00-08] - [Stage Name]
+# PURPOSE: [One-line description]
+# ═══════════════════════════════════════════════════════════════════════════════
+tags:
+  - type/[note-type]
+  - project/[project-name]
+  - stage/[00-08]-[stage]
+aliases: []
+lead: "One-line summary"
+icon: "🚀"
+created: "YYYY-MM-DD"
+modified: "YYYY-MM-DD"
+template:
+  name: "[Template Name]"
+  version: "2.0"
+  stage: "[00-08]"
+project: "[Project Name]"
+status: active
+phase: discovery
+---
+```
+
+## Required Fields
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| `tags` | Yes | Must include `type/`, `project/`, `stage/` |
+| `lead` | Yes | One-line summary for callouts |
+| `icon` | Yes | Emoji for visual scanning |
+| `created` | Yes | ISO date |
+| `modified` | Yes | Update on every edit |
+| `template.name` | Yes | Source template name |
+| `template.stage` | Yes | Folder stage number |
+| `project` | Yes | Project name |
+| `status` | Yes | active/paused/completed/archived |
+
+## Back Matter
+
+Every note MUST end with Back Matter section:
+
+```markdown
+---
+## Back Matter
+
+**Source**:: [[Origin Note]]
+**References**:: [[Related Note]]
+**Used By**:: [[Consumer Note]]
+
+---
+**Open Questions**
+- ❓ Question
+
+**Action Items**
+- [ ] Task
+```
+
+## Tag Conventions
+
+### Type Tags (use exactly one primary type)
+- `type/moc` — Map of Content
+- `type/dashboard` — Status dashboard
+- `type/prd` — Product requirements
+- `type/persona` — User persona
+- `type/experiment` — Validation test
+- `type/decision` — ADR/decision record
+- `type/canvas` — Business canvas
+- `type/meeting` — Meeting notes
+
+### Stage Tags (based on folder)
+- `stage/00-status` through `stage/08-legal`
+
+### Project Tags
+- `project/[lowercase-hyphenated-name]`
+
+## Linking Rules
+
+1. Use WikiLinks: `[[Note Name]]`
+2. Use display text for clarity: `[[Long Note Name|Short]]`
+3. Link to headings: `[[Note#Heading]]`
+4. Embed canvases: `![[Canvas.canvas]]`
+5. Use inline Dataview fields: `**Source**:: [[Note]]`
+
+## Callout Usage
+
+Display frontmatter in callouts:
+
+```markdown
+> [!note] `= this.icon` Title
+> `= this.lead`
+```
+
+## File Naming
+
+- Use Title_Case with underscores: `Market_Overview.md`
+- Prefix with stage number in templates: `03_PRD.md`
+- Canvas files match note names: `UX_Flow.md` → `UX_Flow.canvas`
+
+## Do NOT
+
+- Create notes without frontmatter
+- Use tags not in the taxonomy
+- Leave `modified` date unchanged after edits
+- Create orphan notes (no links to/from)
+- Duplicate content across notes (link instead)

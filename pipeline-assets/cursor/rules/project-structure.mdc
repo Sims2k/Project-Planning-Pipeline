@@ -1,0 +1,80 @@
+---
+description: "Rules for project folder structure and organization. Apply when creating new projects or reorganizing existing ones."
+globs: ["Projects/**"]
+alwaysApply: false
+---
+
+# Project Structure Rules
+
+## Folder Hierarchy
+
+Every project MUST follow this numbered folder structure:
+
+```
+Projects/
+  {{Project-Name}}/
+    {{Project-Name}} MOC.md     # Required: Central hub
+    
+    00_Status & Roadmap/        # Dashboards, roadmaps, ADRs
+    01_Market Analysis/         # TAM/SAM, competitors, SWOT
+    02_User Research/           # Personas, empathy maps
+    03_Product/                 # PRD, business canvases
+    04_Design/                  # UX flows, wireframes
+    05_Technical/               # Tech stack, architecture
+    06_Engineering/             # Backlog, sprints
+      Sprints/                  # Sprint notes subfolder
+    07_Analytics & Growth/      # KPIs, experiments
+    08_Legal & Privacy/         # GDPR, privacy
+    09_Assets/                  # Images, files
+    Archive/                    # Deprecated notes
+```
+
+## Creating a New Project
+
+1. Create project folder in `Projects/`
+2. Create all numbered subfolders (00-09 + Archive)
+3. Create `{{Project-Name}} MOC.md` using `00_Project MOC.md` template
+4. Create minimum viable docs:
+   - `00_Status & Roadmap/Status_Dashboard.md`
+   - `01_Market Analysis/Market_Overview.md`
+   - `02_User Research/Persona_Primary.md`
+   - `03_Product/Lean_Canvas.md`
+
+## Folder Contents by Stage
+
+| Stage | Required Files | Optional Files |
+|-------|----------------|----------------|
+| 00 | Status_Dashboard.md, Roadmap.md | Decision_Log.md, Roadmap.canvas |
+| 01 | Market_Overview.md | Competitor_Map.md, SWOT.md |
+| 02 | Persona_Primary.md | Empathy_Map.md, Interview_*.md |
+| 03 | Lean_Canvas.md or PRD.md | Business_Model.canvas, Value_Prop.canvas |
+| 04 | UX_Flow.md | UX_Flow.canvas, Wireframes.md |
+| 05 | Tech_Stack.md | Architecture.canvas, Deploy_Guide.md |
+| 06 | Backlog.md | Sprints/Current_Sprint.md |
+| 07 | KPIs.md | Experiment_Log.md, Experiment_*.md |
+| 08 | — | GDPR_Notes.md, Privacy_Policy.md |
+
+## File Placement Rules
+
+- Notes go in their lifecycle stage folder
+- Canvases go alongside their markdown counterpart
+- Assets (images) go in `09_Assets/`
+- Completed/deprecated notes move to `Archive/`
+
+## MOC Requirements
+
+Project MOC MUST include:
+1. Business value hypothesis in `lead` field
+2. Quick navigation table to all stages
+3. Dataview query for recent activity
+4. Dataview query for open tasks
+5. Key metrics table
+6. External links section (repo, design, analytics)
+
+## Do NOT
+
+- Create projects outside `Projects/` folder
+- Skip required numbered folders
+- Create notes in project root (except MOC)
+- Use non-standard folder names
+- Delete the Archive folder

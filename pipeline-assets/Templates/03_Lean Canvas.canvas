@@ -1,0 +1,15 @@
+{
+	"nodes":[
+		{"id":"b2c3d4e5f6a70001","type":"group","x":0,"y":-60,"width":1100,"height":520,"label":"Lean Canvas (Ash Maurya)","color":"5"},
+		{"id":"b2c3d4e5f6a70010","type":"text","x":20,"y":0,"width":200,"height":220,"color":"1","text":"## Problem\n\n**Top 3:**\n1. [Problem 1]\n2. [Problem 2]\n3. [Problem 3]\n\n**Existing Alternatives:**\n- [How solved today]"},
+		{"id":"b2c3d4e5f6a70011","type":"text","x":240,"y":0,"width":200,"height":220,"color":"4","text":"## Solution\n\n**Top 3 features:**\n1. [Feature 1]\n2. [Feature 2]\n3. [Feature 3]"},
+		{"id":"b2c3d4e5f6a70012","type":"text","x":460,"y":0,"width":200,"height":220,"color":"5","text":"## Unique Value Prop\n\n**Clear message:**\n> \"[Your tagline]\"\n\n**High-level concept:**\n> [X] for [Y]"},
+		{"id":"b2c3d4e5f6a70013","type":"text","x":680,"y":0,"width":200,"height":220,"color":"6","text":"## Unfair Advantage\n\n*Can't be easily copied:*\n\n- [Advantage 1]\n- [Advantage 2]\n- [Advantage 3]"},
+		{"id":"b2c3d4e5f6a70014","type":"text","x":900,"y":0,"width":180,"height":220,"color":"2","text":"## Customer Segments\n\n**Target:**\n- [Segment 1]\n\n**Early Adopters:**\n- [Who buys first?]"},
+		{"id":"b2c3d4e5f6a70015","type":"text","x":20,"y":240,"width":530,"height":100,"color":"3","text":"## Key Metrics (AARRR)\n\n- **Acquisition**: [How users find you]\n- **Activation**: [First value moment]\n- **Retention**: [Users coming back]\n- **Revenue**: [Users paying]\n- **Referral**: [Users inviting]"},
+		{"id":"b2c3d4e5f6a70016","type":"text","x":570,"y":240,"width":510,"height":100,"color":"5","text":"## Channels\n\n**Organic:** [SEO, content, social]\n**Paid:** [Ads, sponsorships]\n**Partnerships:** [Newsletter swaps, influencers]"},
+		{"id":"b2c3d4e5f6a70017","type":"text","x":20,"y":360,"width":530,"height":80,"color":"1","text":"## Cost Structure\n\n- **Fixed**: $[X]/mo (hosting, tools)\n- **Variable**: $[X]/customer (support, infra)\n- **CAC target**: $[X]"},
+		{"id":"b2c3d4e5f6a70018","type":"text","x":570,"y":360,"width":510,"height":80,"color":"4","text":"## Revenue Streams\n\n- **Model**: [Subscription / One-time / Freemium]\n- **Pricing**: $[X]/mo\n- **LTV target**: $[X]"}
+	],
+	"edges":[]
+}

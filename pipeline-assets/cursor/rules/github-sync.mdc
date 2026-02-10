@@ -1,0 +1,264 @@
+---
+description: "GitHub repository configuration and sync rules for the Project Brain vault. Apply when setting up GitHub, configuring Actions, or managing remote repository."
+alwaysApply: false
+---
+
+# GitHub Repository Rules
+
+## Repository Setup
+
+### Repository Settings
+
+| Setting | Value |
+|---------|-------|
+| Visibility | Private (recommended) |
+| Default branch | `main` |
+| Branch protection | Enabled for `main` |
+| Issues | Enabled |
+| Projects | Optional |
+| Wiki | Disabled (use vault) |
+
+### Branch Protection Rules
+
+For `main` branch:
+- ✅ Require pull request before merging
+- ✅ Require approvals (1 for solo, 2+ for team)
+- ✅ Dismiss stale reviews on new commits
+- ✅ Require status checks to pass
+- ✅ Require linear history
+- ❌ Allow force pushes
+- ❌ Allow deletions
+
+## GitHub Actions
+
+### Lint Check Workflow
+
+Create `.github/workflows/lint.yml`:
+
+```yaml
+name: Lint Vault
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check for broken wikilinks
+        run: |
+          # Find wikilinks and check if targets exist
+          grep -roh '\[\[[^]]*\]\]' --include="*.md" | \
+            sed 's/\[\[//g; s/\]\]//g; s/|.*//g; s/#.*//g' | \
+            sort -u > links.txt
+          
+          # Report missing (basic check)
+          while read link; do
+            if ! find . -name "*.md" | xargs grep -l "$link" > /dev/null 2>&1; then
+              echo "⚠️ Potentially broken link: $link"
+            fi
+          done < links.txt
+      
+      - name: Check frontmatter
+        run: |
+          # Verify all project notes have required frontmatter
+          for file in Projects/**/*.md; do
+            if ! head -1 "$file" | grep -q "^---"; then
+              echo "❌ Missing frontmatter: $file"
+              exit 1
+            fi
+          done
+          echo "✅ All notes have frontmatter"
+      
+      - name: Validate canvas JSON
+        run: |
+          for file in **/*.canvas; do
+            if ! python -m json.tool "$file" > /dev/null 2>&1; then
+              echo "❌ Invalid JSON: $file"
+              exit 1
+            fi
+          done
+          echo "✅ All canvas files valid"
+```
+
+### Backup Workflow
+
+Create `.github/workflows/backup.yml`:
+
+```yaml
+name: Backup Vault
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Create backup tag
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          git tag "backup-$DATE"
+          git push origin "backup-$DATE"
+```
+
+### Release Workflow
+
+Create `.github/workflows/release.yml`:
+
+```yaml
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Get commits since last tag
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          if [ -n "$PREV_TAG" ]; then
+            CHANGES=$(git log --oneline $PREV_TAG..HEAD)
+          else
+            CHANGES=$(git log --oneline)
+          fi
+          echo "changes<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
+          body: |
+            ## Changes
+            ${{ steps.changelog.outputs.changes }}
+          draft: false
+          prerelease: false
+```
+
+## Issue Templates
+
+Create `.github/ISSUE_TEMPLATE/note-request.md`:
+
+```markdown
+---
+name: Note Request
+about: Request a new note or template
+title: '[NOTE] '
+labels: documentation
+assignees: ''
+---
+
+## Note Type
+- [ ] Project note
+- [ ] Template
+- [ ] Canvas
+
+## Project/Stage
+Project: 
+Stage: 
+
+## Description
+What should this note document?
+
+## Acceptance Criteria
+- [ ] Frontmatter complete
+- [ ] Back matter with links
+- [ ] Follows template
+```
+
+## Labels
+
+| Label | Color | Use |
+|-------|-------|-----|
+| `documentation` | `#0075ca` | Note changes |
+| `template` | `#7057ff` | Template work |
+| `canvas` | `#008672` | Canvas files |
+| `structure` | `#e4e669` | Folder changes |
+| `bug` | `#d73a4a` | Broken links/errors |
+| `enhancement` | `#a2eeef` | Improvements |
+
+## Sync Workflow
+
+### Daily Sync (Recommended)
+
+```bash
+# Morning: Pull latest
+git pull origin main
+
+# Work in Obsidian...
+
+# End of day: Commit and push
+git add -A
+git commit -m "docs: daily update $(date +%Y-%m-%d)"
+git push origin main
+```
+
+### Conflict Resolution
+
+If conflicts occur in `.md` files:
+1. Keep both versions if content differs
+2. Merge frontmatter carefully (newer `modified` date wins)
+3. Combine Back Matter links from both versions
+4. Test all wikilinks after merge
+
+## Obsidian Git Plugin
+
+Recommended settings for [Obsidian Git](https://github.com/denolehov/obsidian-git):
+
+| Setting | Value |
+|---------|-------|
+| Auto pull interval | 10 minutes |
+| Auto push interval | 10 minutes |
+| Commit message | `vault backup: {{date}}` |
+| Pull on startup | Enabled |
+| Push on backup | Enabled |
+
+## Security
+
+### Sensitive Content
+
+If vault contains sensitive notes:
+1. Keep repository **private**
+2. Use `.gitignore` for sensitive folders
+3. Consider separate vault for private notes
+4. Review before each commit
+
+### Access Control
+
+- Use GitHub Teams for shared vaults
+- Limit write access to trusted collaborators
+- Enable 2FA for all contributors
+- Review PR changes before merge
+
+## Do NOT
+
+- Make repository public with sensitive content
+- Store credentials in notes
+- Commit `.obsidian/workspace.json`
+- Force push to `main`
+- Ignore CI failures
+- Skip PR reviews for significant changes

@@ -1,0 +1,19 @@
+{
+	"nodes": [
+		{"id": "f6a7b8c9d0e10001", "type": "text", "x": 200, "y": -200, "width": 260, "height": 40, "text": "## Competitor Positioning Map"},
+		{"id": "f6a7b8c9d0e10002", "type": "text", "x": 200, "y": -140, "width": 260, "height": 30, "text": "**HIGH [Dimension Y]**"},
+		{"id": "f6a7b8c9d0e10003", "type": "text", "x": 200, "y": 420, "width": 260, "height": 30, "text": "**LOW [Dimension Y]**"},
+		{"id": "f6a7b8c9d0e10004", "type": "text", "x": -180, "y": 140, "width": 140, "height": 30, "text": "**LOW [Dim X]**"},
+		{"id": "f6a7b8c9d0e10005", "type": "text", "x": 700, "y": 140, "width": 140, "height": 30, "text": "**HIGH [Dim X]**"},
+		{"id": "f6a7b8c9d0e10010", "type": "group", "x": 0, "y": -100, "width": 300, "height": 240, "label": "Quadrant 1: High Y / Low X", "color": "6"},
+		{"id": "f6a7b8c9d0e10011", "type": "group", "x": 360, "y": -100, "width": 300, "height": 240, "label": "Quadrant 2: High Y / High X", "color": "4"},
+		{"id": "f6a7b8c9d0e10012", "type": "group", "x": 0, "y": 180, "width": 300, "height": 220, "label": "Quadrant 3: Low Y / Low X", "color": "3"},
+		{"id": "f6a7b8c9d0e10013", "type": "group", "x": 360, "y": 180, "width": 300, "height": 220, "label": "Quadrant 4: Low Y / High X", "color": "2"},
+		{"id": "f6a7b8c9d0e10020", "type": "text", "x": 20, "y": -60, "width": 120, "height": 60, "text": "[Competitor 1]"},
+		{"id": "f6a7b8c9d0e10021", "type": "text", "x": 400, "y": -60, "width": 120, "height": 60, "color": "4", "text": "**YOUR\nPRODUCT**"},
+		{"id": "f6a7b8c9d0e10022", "type": "text", "x": 20, "y": 220, "width": 120, "height": 60, "text": "[Competitor 2]"},
+		{"id": "f6a7b8c9d0e10023", "type": "text", "x": 400, "y": 220, "width": 120, "height": 60, "text": "[Competitor 3]"},
+		{"id": "f6a7b8c9d0e10030", "type": "text", "x": 0, "y": 470, "width": 660, "height": 80, "text": "## Key Insight\n\n[Your product occupies a unique position because...]"}
+	],
+	"edges": []
+}

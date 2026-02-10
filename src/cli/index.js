@@ -19,6 +19,7 @@ program
   .command('setup')
   .description('Install the pipeline into a vault (merge-only by default; use --overwrite to replace existing files)')
   .argument('[vault-path]', 'Target vault directory (default: current directory)')
+  .option('-p, --project <name>', 'Project name: create Projects/<name>/ with stage folders (run again with different names for multiple projects)')
   .option('-f, --overwrite', 'Overwrite existing files')
   .option('--no-color', 'Disable colored output')
   .action(setupCommand);

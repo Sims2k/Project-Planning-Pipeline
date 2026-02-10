@@ -9,7 +9,7 @@
 - **Dashboard** — Central command center note
 - **Templates** — Stage-based project and meeting templates (.md and .canvas)
 - **.cursor** — Rules, skills, and agents for Cursor
-- **Projects** — Empty stage folders (00_Status & Roadmap through 09_Assets, Archive) ready for new projects
+- **Projects** — A `Projects/` directory. Optionally create one or more **project folders** (e.g. `Projects/My Product/`) each with stage folders (00_Status & Roadmap … 09_Assets, Archive) via the `--project` option.
 
 Merge-only by default: existing files in your vault are not overwritten unless you opt in.
 
@@ -31,7 +31,13 @@ If you’re in your vault folder, this is all you need — no path, no clone, no
 npx github:Sims2k/Project-Planning-Pipeline setup
 ```
 
-It installs the pipeline into the **current directory**. Done.
+It installs the pipeline into the **current directory**. To create a **project** (a folder under `Projects/` with stage folders), add `--project "Project Name"`:
+
+```bash
+npx github:Sims2k/Project-Planning-Pipeline setup --project "My Product"
+```
+
+Run setup again with different `--project` names to add more projects.
 
 ---
 
@@ -117,6 +123,7 @@ See [Setup guide (manual)](docs/setup-guide.md) to copy `pipeline-assets/` into 
 
 | Option | Description |
 |--------|-------------|
+| `-p, --project <name>` | Create `Projects/<name>/` with stage folders. Omit to install only shared assets; run again with different names for multiple projects. |
 | `-f, --overwrite` | Overwrite existing files (default: merge-only, skip existing) |
 | `--no-color` | Disable colored output (e.g. for CI) |
 
@@ -132,7 +139,7 @@ See [Setup guide (manual)](docs/setup-guide.md) to copy `pipeline-assets/` into 
 
 ## Vault organization
 
-- **Projects/** — One folder per project. Each project uses the same stage structure (00_Status & Roadmap, 01_Market Analysis, … 09_Assets, Archive).
+- **Projects/** — One folder per project (e.g. `Projects/My Product/`). Each has the same stage structure: 00_Status & Roadmap, 01_Market Analysis, … 09_Assets, Archive. Create projects with `pipeline setup --project "Project Name"`.
 - **Templates/** — Reusable note and canvas templates for each stage.
 - **.cursor/** — Cursor rules, skills, and agents that apply when working in the vault.
 - **Dashboard.md** — Entry point for projects, metrics, and experiments (Obsidian + Dataview).
@@ -141,11 +148,15 @@ See [Setup guide (manual)](docs/setup-guide.md) to copy `pipeline-assets/` into 
 
 ## Creating your first project
 
-1. Under **Projects/**, create a new folder with your project name (e.g. `My Product`).
-2. Copy the stage structure from **Projects** (or from `pipeline-assets/project-folders/`):  
-   `00_Status & Roadmap`, `01_Market Analysis`, `02_User Research`, `03_Product`, `04_Design`, `05_Technical`, `06_Engineering`, `07_Analytics & Growth`, `08_Legal & Privacy`, `09_Assets`, `Archive`. Optionally add `06_Engineering/Sprints/`.
-3. Create a **Project MOC** (Map of Content) in the project root using the template **Templates → 00_Project MOC.md**, and link it from the Dashboard.
-4. Use **Templates** and **.cursor** rules/skills/agents when writing notes and running Cursor in the vault.
+1. **From the CLI:** run setup with a project name to create `Projects/<name>/` and all stage folders:
+   ```bash
+   npx github:Sims2k/Project-Planning-Pipeline setup --project "My Product"
+   ```
+   Add more projects by running the same command with different names.
+
+2. Create a **Project MOC** (Map of Content) in the project root using the template **Templates → 00_Project MOC.md**, and link it from the Dashboard.
+
+3. Use **Templates** and **.cursor** rules/skills/agents when writing notes and running Cursor in the vault.
 
 ---
 

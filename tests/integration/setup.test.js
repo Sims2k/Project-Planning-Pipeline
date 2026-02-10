@@ -52,4 +52,19 @@ describe('setup command', () => {
       assert.ok(e.status !== 0);
     }
   });
+
+  it('with --project creates Projects/<name>/ with stage folders', () => {
+    runSetup(tmpDir, ['--project', 'MyProduct']);
+    assert.ok(existsSync(path.join(tmpDir, 'Projects', 'MyProduct')));
+    assert.ok(existsSync(path.join(tmpDir, 'Projects', 'MyProduct', '00_Status & Roadmap')));
+    assert.ok(existsSync(path.join(tmpDir, 'Projects', 'MyProduct', '09_Assets')));
+    assert.ok(existsSync(path.join(tmpDir, 'Projects', 'MyProduct', 'Archive')));
+  });
+
+  it('multiple --project runs create multiple project folders', () => {
+    runSetup(tmpDir, ['--project', 'ProjectA']);
+    runSetup(tmpDir, ['--project', 'ProjectB']);
+    assert.ok(existsSync(path.join(tmpDir, 'Projects', 'ProjectA', '00_Status & Roadmap')));
+    assert.ok(existsSync(path.join(tmpDir, 'Projects', 'ProjectB', '00_Status & Roadmap')));
+  });
 });

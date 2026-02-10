@@ -32,6 +32,7 @@ Install the project planning pipeline into a vault.
 
 | Option        | Short | Type    | Default | Description |
 |---------------|-------|---------|---------|-------------|
+| --project     | -p    | string  | —       | Project name: create `Projects/<name>/` with stage folders (00_..., 09_Assets, Archive). Omit to install only shared assets (Dashboard, Templates, .cursor) and an empty Projects/. Run again with different names for multiple projects. |
 | --overwrite   | -f    | boolean | false   | Overwrite existing files. Default is merge-only (skip existing). |
 | --no-color    | —     | boolean | false   | Disable colored output (e.g. for CI). |
 | --help        | -h    | —       | —       | Show help for setup. |
@@ -82,5 +83,6 @@ Show global help or command-specific help.
 - Invoking `pipeline --help` or `pipeline -h` must print usage and list at least `setup` and `version`.
 - Invoking `pipeline setup --help` must print setup-specific usage and options.
 - Invoking `pipeline setup /nonexistent` must exit non-zero (e.g. 2).
-- Invoking `pipeline setup` in an empty directory must exit 0 and create at least Projects/, Templates/, .cursor/, Dashboard.md.
+- Invoking `pipeline setup` in an empty directory must exit 0 and create at least Projects/, Templates/, .cursor/, Dashboard.md (Projects/ may be empty).
+- Invoking `pipeline setup --project "MyProject"` must create Projects/MyProject/ with stage folders (00_Status & Roadmap, …, 09_Assets, Archive).
 - Invoking `pipeline setup` again in the same directory (merge-only) must exit 0 and overwrite no existing files (skipped count > 0 if files exist).

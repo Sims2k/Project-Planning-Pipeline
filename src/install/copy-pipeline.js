@@ -5,19 +5,23 @@ const { decideFileOperation } = require('./merge-only.js');
 
 /**
  * Map relative path under pipeline-assets to vault-relative path.
+ * When projectName is set, project-folders go under Projects/<projectName>/.
+ * When projectName is not set, project-folders are skipped (returns null).
  * - Dashboard.md -> Dashboard.md
  * - Templates/x -> Templates/x
- * - cursor/rules/x -> .cursor/rules/x
- * - cursor/skills/x -> .cursor/skills/x
- * - cursor/agents/x -> .cursor/agents/x
- * - project-folders/x -> Projects/x
+ * - cursor/* -> .cursor/*
+ * - project-folders/x -> Projects/<projectName>/x (or null if no projectName)
  */
-function assetRelToVaultRel(assetRel) {
+function assetRelToVaultRel(assetRel, projectName) {
   const normalized = path.normalize(assetRel).replace(/\\/g, '/');
   if (normalized === 'Dashboard.md') return 'Dashboard.md';
   if (normalized.startsWith('Templates/')) return normalized;
   if (normalized.startsWith('cursor/')) return '.cursor/' + normalized.slice('cursor/'.length);
-  if (normalized.startsWith('project-folders/')) return 'Projects/' + normalized.slice('project-folders/'.length);
+  if (normalized.startsWith('project-folders/')) {
+    if (!projectName || !projectName.trim()) return null;
+    const rest = normalized.slice('project-folders/'.length);
+    return 'Projects/' + projectName.trim() + '/' + rest;
+  }
   return normalized;
 }
 
@@ -45,17 +49,22 @@ function listFiles(base, dir, rel = '') {
 
 /**
  * Copy pipeline-assets into vault. Merge-only unless overwrite is true.
+ * When projectName is provided, stage folders are created under Projects/<projectName>/.
+ * When not provided, only shared assets (Dashboard, Templates, .cursor) are copied and Projects/ is created empty.
  * @param {string} vaultPath - Absolute path to vault
  * @param {boolean} overwrite - If true, overwrite existing files
+ * @param {string} [projectName] - Optional. If set, create Projects/<projectName>/ with stage folders (00_..., 09_Assets, Archive).
  * @returns {{ copied: number, skipped: number, overwritten: number }}
  */
-function copyPipeline(vaultPath, overwrite) {
+function copyPipeline(vaultPath, overwrite, projectName) {
   const assetsPath = getPipelineAssetsPath();
   const files = listFiles(assetsPath, assetsPath);
   let copied = 0, skipped = 0, overwritten = 0;
 
   for (const { absolute: sourcePath, relative: assetRel } of files) {
-    const vaultRel = assetRelToVaultRel(assetRel);
+    const vaultRel = assetRelToVaultRel(assetRel, projectName);
+    if (vaultRel === null) continue; // skip project-folders when no project name
+
     const targetPath = path.join(vaultPath, vaultRel);
 
     const op = decideFileOperation(sourcePath, targetPath, overwrite);
@@ -71,6 +80,12 @@ function copyPipeline(vaultPath, overwrite) {
     fs.copyFileSync(sourcePath, targetPath);
     if (op === 'overwrite') overwritten++;
     else copied++;
+  }
+
+  // Ensure Projects/ exists even when no project name (so user can add projects later)
+  const projectsDir = path.join(vaultPath, 'Projects');
+  if (!fs.existsSync(projectsDir)) {
+    fs.mkdirSync(projectsDir, { recursive: true });
   }
 
   return { copied, skipped, overwritten };

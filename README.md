@@ -19,7 +19,7 @@ Merge-only by default: existing files in your vault are not overwritten unless y
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/your-org/project-planning-pipeline.git
+   git clone https://github.com/Sims2k/Project-Planning-Pipeline.git
    cd project-planning-pipeline
    ```
 

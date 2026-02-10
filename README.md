@@ -24,19 +24,23 @@ Merge-only by default: existing files in your vault are not overwritten unless y
    ```
 
 2. **Run the CLI** (from the repo or with a path to your vault)
-   - From the vault directory:
+   - **From the vault directory**, point npx at the cloned repo (replace with your path to the clone):
      ```bash
-     npx pipeline setup
+     npx /path/to/Project-Planning-Pipeline setup
      ```
-   - Or from anywhere, passing the vault path:
+   - **From inside the cloned repo**, run setup and pass your vault path:
      ```bash
-     npx pipeline setup /path/to/your/vault
+     cd Project-Planning-Pipeline
+     npm install
+     node bin/pipeline.js setup C:\path\to\your\vault
      ```
-   - Or install globally and run from anywhere:
+   - **Or install globally** from the cloned repo and run `pipeline` from anywhere:
      ```bash
+     cd Project-Planning-Pipeline
      npm install -g .
-     pipeline setup /path/to/your/vault
+     pipeline setup
      ```
+     (From inside your vault folder, or `pipeline setup C:\path\to\vault` from anywhere.)
 
 3. **Without CLI** — See [Setup guide (manual)](docs/setup-guide.md) to copy `pipeline-assets/` into your vault by hand.
 

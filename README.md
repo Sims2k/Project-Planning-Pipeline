@@ -20,7 +20,7 @@ Merge-only by default: existing files in your vault are not overwritten unless y
 1. **Clone the repo**
    ```bash
    git clone https://github.com/Sims2k/Project-Planning-Pipeline.git
-   cd project-planning-pipeline
+   cd Project-Planning-Pipeline
    ```
 
 2. **Run the CLI** (from the repo or with a path to your vault)

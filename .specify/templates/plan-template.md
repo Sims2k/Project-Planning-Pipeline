@@ -31,7 +31,13 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Verify alignment with `.specify/memory/constitution.md`:
+
+- **Obsidian-First**: Outputs and structure follow Obsidian conventions; no destructive vault ops without consent.
+- **CLI & Installability**: Setup achievable via clone + CLI or setup guide; CLI has subcommands, --help, clear exit codes.
+- **Research & Specification**: Design grounded in research; rationale documented in spec/plan.
+- **Documentation as Contract**: README updated for any user-facing change; kept in sync with repo.
+- **Open Source Structure**: CONTRIBUTING, LICENSE, clear layout, issue/PR templates, semantic versioning.
 
 ## Project Structure
 

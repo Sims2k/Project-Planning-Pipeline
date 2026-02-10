@@ -1,0 +1,27 @@
+{
+  "name": "project-planning-pipeline",
+  "version": "1.0.0",
+  "description": "CLI to set up a project planning pipeline in an Obsidian vault (Projects, Templates, .cursor, Dashboard)",
+  "bin": {
+    "pipeline": "bin/pipeline.js"
+  },
+  "scripts": {
+    "start": "node bin/pipeline.js",
+    "test": "node --test tests/integration/setup.test.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "obsidian",
+    "cursor",
+    "project-planning",
+    "cli",
+    "vault"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^12.0.0"
+  }
+}

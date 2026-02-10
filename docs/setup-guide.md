@@ -1,36 +1,32 @@
-# Setup guide — Pipeline without CLI
+# Manual setup (without CLI)
 
-If you prefer not to run the CLI, you can achieve the same vault structure by copying the pipeline assets manually.
+You can get the same vault structure by copying from the repo’s `pipeline-assets/` folder.
 
-## Source and target paths
+## 1. Shared assets
 
-Clone the repository and copy from the `pipeline-assets/` folder into your vault root:
+Copy into your vault root:
 
-| Source (in repo) | Target (in vault) |
-|------------------|-------------------|
+| Source | Target |
+|--------|--------|
 | `pipeline-assets/Dashboard.md` | `Dashboard.md` |
 | `pipeline-assets/Templates/*` | `Templates/` |
 | `pipeline-assets/cursor/rules/*` | `.cursor/rules/` |
 | `pipeline-assets/cursor/skills/*` | `.cursor/skills/` |
 | `pipeline-assets/cursor/agents/*` | `.cursor/agents/` |
-| `pipeline-assets/project-folders/*` | `Projects/` |
 
-**Merge-only**: Do not overwrite existing files in your vault unless you intend to replace them.
+Create an empty `Projects/` directory in the vault.
 
-## Optional: .github and .obsidian
+## 2. Adding a project
 
-The CLI does **not** install `.github` or `.obsidian` in v1. To add them:
+For each project, create a folder under `Projects/` with your project name, then copy the stage structure into it:
 
-- **.github**: Copy from the repo’s `.github` (if present) into your vault for issue templates and workflows.
-- **.obsidian**: Configure Obsidian (appearance, plugins, themes) in your vault’s `.obsidian` folder; you can copy a reference `.obsidian` from another vault or set it up manually.
+- **Target:** `Projects/<YourProjectName>/`
+- **Source:** Copy the contents of `pipeline-assets/project-folders/` into that folder.
 
-## Result
+So you get `Projects/<YourProjectName>/00_Status & Roadmap/`, `01_Market Analysis/`, … `09_Assets/`, `Archive/`, and `06_Engineering/Sprints/` (each can contain a `.gitkeep` or stay empty).
 
-After copying, your vault will have:
+Do not overwrite existing files unless you intend to replace them.
 
-- **Dashboard.md** — Command center note
-- **Templates/** — Project and meeting templates (.md and .canvas)
-- **.cursor/** — Rules, skills, and agents for Cursor
-- **Projects/** — Empty stage folders (00_Status & Roadmap through 09_Assets, Archive)
+## Optional
 
-This matches the result of running `pipeline setup [vault-path]`.
+- **.github** / **.obsidian**: Not included in pipeline-assets. Add or configure them in your vault as needed.

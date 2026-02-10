@@ -173,6 +173,12 @@ The CLI is supported on **Windows**, **macOS**, and **Linux** (Node.js LTS 20 or
 
 ---
 
+## Credits & inspiration
+
+The vault layout and Dashboard design take inspiration from the [Obsidian Zettelkasten Starter Kit](https://github.com/groepl/Obsidian-Zettelkasten-Starter-Kit) by [Edmund Gröpl](https://github.com/groepl) — a starter kit for Obsidian with essential elements for a Zettelkasten-style knowledge system. Templates and structure also draw on [Obsidian-Templates](https://github.com/groepl/Obsidian-Templates) for Obsidian and Zettelkasten-style note-taking.
+
+---
+
 ## Optional config (future)
 
 An optional CLI config file may be added in a future release (e.g. default vault path, theme). The current release uses command-line options only.

@@ -235,9 +235,10 @@ LIMIT 10
 
 | Resource | Link |
 |----------|------|
-| 📦 Repository | [GitHub](https://github.com/Sims2k/Project-Brain) |
 | 📚 Cursor Rules | `.cursor/rules/` |
 | 🛠️ Cursor Skills | `.cursor/skills/` |
+| 📦 Obsidian Zettelkasten Starter Kit | [GitHub](https://github.com/groepl/Obsidian-Zettelkasten-Starter-Kit) |
+| 📄 Obsidian-Templates (Zettelkasten) | [GitHub](https://github.com/groepl/Obsidian-Templates) |
 
 ---
 
